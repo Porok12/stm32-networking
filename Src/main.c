@@ -91,13 +91,21 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  uint8_t data[32];
+  uint16_t size = 0;
+  size = sprintf(data, "Hello\n\r");
+  HAL_UART_Transmit_IT(&huart1, data, size);
 
+  uint8_t received;
+  HAL_UART_Receive(&huart1, &received, 1, 10000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_Delay(1000);
+	  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
