@@ -1,0 +1,8 @@
+*.o
+*.d
+*.mk
+*.map
+*.list
+makefile
+*.elf
+*.hex
